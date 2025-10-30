@@ -1,0 +1,123 @@
+{
+  "name": "whatsapp-system",
+  "version": "1.1.0",
+  "description": "Ws管理系统",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .",
+    "prepare": "node build-scripts/prepare-build.js",
+    "verify": "node build-scripts/verify-build.js",
+    "build:backend": "cd ../backend && npm run build",
+    "build:frontend": "cd ../frontend && npm run build",
+    "build": "node build-scripts/build-script.js",
+    "build:win": "node build-scripts/build-script.js",
+    "build:win:nosign": "cross-env CSC_IDENTITY_AUTO_DISCOVERY=false node build-scripts/build-script.js",
+    "build:dir": "npm run clean && npm run build:backend && npm run build:frontend && npm run prepare && npm run verify && npx electron-builder --dir",
+    "build:old": "npm run clean && npm run build:backend && npm run build:frontend && npm run prepare && npm run verify && npx electron-builder",
+    "postinstall": "electron-builder install-app-deps",
+    "clean": "rimraf dist build-output ../frontend/dist"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "https-proxy-agent": "^7.0.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/haoyuehongdou/ws-updata.git"
+  },
+  "devDependencies": {
+    "electron": "^25.0.0",
+    "electron-builder": "^24.9.1",
+    "rimraf": "^5.0.5"
+  },
+  "build": {
+    "appId": "com.whatsapp.system",
+    "productName": "WhatsApp 管理系统",
+    "asar": true,
+    "asarUnpack": [
+      "**/node_modules/sharp/**/*",
+      "**/node_modules/@whiskeysockets/**/*"
+    ],
+    "includeSubNodeModules": false,
+    "publish": [
+      {
+        "provider": "github",
+        "owner": "haoyuehongdou",
+        "repo": "ws-updata",
+        "releaseType": "release"
+      }
+    ],
+    "directories": {
+      "output": "dist",
+      "buildResources": "Icon"
+    },
+    "extraResources": [
+      {
+        "from": "build-output/ncc-backend",
+        "to": "backend",
+        "filter": [
+          "**/*"
+        ]
+      },
+      {
+        "from": "../frontend/dist",
+        "to": "app",
+        "filter": [
+          "**/*"
+        ]
+      }
+    ],
+    "files": [
+      "main.js",
+      "package.json",
+      "Icon/**/*",
+      "!**/*.{iml,o,hprof,orig,pyc,pyo,rbc,swp,csproj,sln,xproj}",
+      "!.editorconfig",
+      "!**/._*",
+      "!**/{.DS_Store,.git,.hg,.svn,CVS,RCS,SCCS,.gitignore,.gitattributes}",
+      "!**/{__pycache__,thumbs.db,.flowconfig,.idea,.vs,.nyc_output}",
+      "!**/{appveyor.yml,.travis.yml,circle.yml}",
+      "!**/{npm-debug.log,yarn.lock,.yarn-integrity,.yarn-metadata.json}",
+      "!**/{README,readme}.md",
+      "!**/{test,tests,spec,__tests__}/**/*",
+      "!**/*.{md,markdown}",
+      "!**/LICENSE*",
+      "!**/CHANGELOG*",
+      "!**/.github/**/*",
+      "!**/examples/**/*",
+      "!**/docs/**/*",
+      "!backend/.wwebjs_cache/**",
+      "!data/**",
+      "!*.log",
+      "!.env*",
+      "!node_modules/**/*",
+      "!prepare-build.js",
+      "!verify-build.js",
+      "!build-output/**/*"
+    ],
+    "win": {
+      "icon": "Icon/icon.ico",
+      "sign": false,
+      "signingHashAlgorithms": [],
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": true,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": false,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "WhatsApp 管理系统",
+      "installerIcon": "Icon/icon.ico",
+      "uninstallerIcon": "Icon/icon.ico"
+    }
+  }
+}

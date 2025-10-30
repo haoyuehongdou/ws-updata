@@ -1,0 +1,49 @@
+{
+  "name": "whatsapp-system-backend",
+  "version": "1.1.0",
+  "description": "WhatsApp群发和记账系统后端",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js E:\\project\\ws\\whatsapp-system\\data",
+    "dev": "nodemon index.js E:\\project\\ws\\whatsapp-system\\data",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "ncc build index.js -o ../electron/build-output/ncc-backend -m --no-source-map-register --no-asset-builds && node -e \"require('fs').copyFileSync('package.json', '../electron/build-output/ncc-backend/package.json')\"",
+    "build:esbuild": "esbuild index.js --bundle --platform=node --outfile=../electron/build/backend-esbuild/index.js --minify"
+  },
+  "keywords": [
+    "whatsapp",
+    "broadcast",
+    "billing"
+  ],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.57.4",
+    "@whiskeysockets/baileys": "^7.0.0-rc.6",
+    "axios": "^1.12.2",
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "get-proxy-settings": "^0.1.13",
+    "https-proxy-agent": "^7.0.6",
+    "jsonwebtoken": "^9.0.2",
+    "mathjs": "^14.7.0",
+    "moment": "^2.29.4",
+    "multer": "^1.4.5-lts.1",
+    "node-cron": "^3.0.3",
+    "node-fetch": "^3.3.2",
+    "pino": "^9.2.0",
+    "proxy-agent": "^6.5.0",
+    "qrcode": "^1.5.3",
+    "socks-proxy-agent": "^8.0.5",
+    "uuid": "^9.0.1",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.38.4",
+    "cross-env": "^10.0.0",
+    "esbuild": "^0.25.10",
+    "nodemon": "^3.0.1"
+  }
+}

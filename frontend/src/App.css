@@ -1,0 +1,385 @@
+/* WhatsApp 管理系统全局样式 */
+
+/* 重置和基础样式 */
+* {
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 
+               'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  background-color: #f5f5f5;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #a8a8a8;
+}
+
+/* Ant Design 组件自定义样式 */
+.ant-btn-primary {
+  border-color: #25D366;
+  background: #25D366;
+}
+
+.ant-btn-primary:hover,
+.ant-btn-primary:focus {
+  border-color: #128C7E;
+  background: #128C7E;
+}
+
+.ant-input:focus,
+.ant-input-focused {
+  border-color: #25D366;
+  box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.2);
+}
+
+.ant-input-password:focus,
+.ant-input-password-focused {
+  border-color: #25D366;
+  box-shadow: 0 0 0 2px rgba(37, 211, 102, 0.2);
+}
+
+/* 登录页面特定样式 */
+.login-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.login-left-panel {
+  background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+  border-radius: 12px 0 0 12px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 40px;
+  color: white;
+}
+
+.login-right-panel {
+  background: white;
+  border-radius: 0 12px 12px 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 40px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+}
+
+/* 响应式样式 */
+@media (max-width: 768px) {
+  .login-left-panel {
+    display: none;
+  }
+  
+  .login-right-panel {
+    border-radius: 12px;
+    padding: 40px 30px;
+  }
+  
+  .login-container {
+    padding: 10px;
+  }
+}
+
+/* 工具类 */
+.text-center {
+  text-align: center;
+}
+
+.mb-16 {
+  margin-bottom: 16px;
+}
+
+.mb-24 {
+  margin-bottom: 24px;
+}
+
+.mb-32 {
+  margin-bottom: 32px;
+}
+
+.mt-16 {
+  margin-top: 16px;
+}
+
+.mt-24 {
+  margin-top: 24px;
+}
+
+.mt-32 {
+  margin-top: 32px;
+}
+
+/* 动画效果 */
+.fade-in {
+  animation: fadeIn 0.3s ease-in;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.slide-in {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* 卡片样式优化 */
+.ant-card {
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+}
+
+.ant-card-bordered {
+  border: 1px solid #f0f0f0;
+}
+
+/* 表单样式优化 */
+.ant-form-item-label > label {
+  font-weight: 500;
+}
+
+.ant-input,
+.ant-input-password {
+  border-radius: 6px;
+}
+
+.ant-btn {
+  border-radius: 6px;
+  font-weight: 500;
+}
+
+/* 布局样式 */
+.main-layout {
+  min-height: 100vh;
+}
+
+.main-content {
+  padding: 24px;
+  background: #f5f5f5;
+  min-height: calc(100vh - 64px);
+}
+
+/* 用户信息区域样式 */
+.user-info-hover:hover {
+  background-color: #f5f5f5;
+  border-radius: 8px;
+}
+
+.user-dropdown {
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.user-dropdown:hover {
+  background-color: #f5f5f5;
+}
+
+/* 响应式隐藏 */
+@media (max-width: 576px) {
+  .mobile-hidden {
+    display: none !important;
+  }
+}
+
+@media (min-width: 577px) {
+  .desktop-hidden {
+    display: none !important;
+  }
+}
+
+/* Broadcast 页面样式 */
+.broadcast-shell {
+  min-height: 100vh;
+  background: #f5f7fb;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.broadcast-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto auto;
+  align-items: center;
+  gap: 16px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 20px 45px rgba(17, 24, 39, 0.08);
+}
+
+.broadcast-toolbar-search {
+  width: 100%;
+}
+
+.broadcast-toolbar-actions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.broadcast-toolbar-select {
+  min-width: 220px;
+}
+
+.broadcast-toolbar-summary {
+  justify-self: end;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.broadcast-toolbar-summary span {
+  font-weight: 600;
+  color: #1677ff;
+}
+
+.broadcast-body {
+  display: grid;
+  grid-template-columns: minmax(0, 5fr) minmax(320px, 3fr);
+  gap: 18px;
+}
+
+.broadcast-panel {
+  border-radius: 14px;
+  box-shadow: 0 22px 50px rgba(15, 23, 42, 0.06);
+}
+
+.broadcast-panel .ant-card-body {
+  padding: 20px;
+}
+
+.broadcast-panel.group-panel .ant-card-body {
+  padding: 0;
+}
+
+.broadcast-panel.editor-panel .ant-card-body {
+  padding: 24px;
+}
+
+.broadcast-panel-body {
+  padding: 0 20px 20px;
+}
+
+.broadcast-tabs .ant-tabs-nav {
+  margin: 0;
+}
+
+.broadcast-tabs .ant-tabs-tab {
+  font-weight: 600;
+  font-size: 15px;
+}
+
+.broadcast-table-container {
+  padding: 20px;
+}
+
+.broadcast-table-hint {
+  display: block;
+  margin-top: 12px;
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.broadcast-category-container {
+  padding: 20px;
+}
+
+.broadcast-category-item {
+  background: #f9fafb;
+  border-radius: 12px;
+  margin-bottom: 12px;
+  padding: 12px 16px;
+  transition: box-shadow 0.2s ease;
+}
+
+.broadcast-category-item:hover {
+  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.08);
+}
+
+.broadcast-category-item .ant-list-item-action {
+  margin-left: 0;
+}
+
+.broadcast-delay-setting {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.broadcast-delay-setting .ant-space {
+  flex-wrap: wrap;
+}
+
+.broadcast-editor-actions {
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.broadcast-empty {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f5f7fb;
+  padding: 32px;
+}
+
+.broadcast-empty-card {
+  border-radius: 16px;
+  box-shadow: 0 26px 55px rgba(15, 23, 42, 0.08);
+}
+
+@media (max-width: 1200px) {
+  .broadcast-body {
+    grid-template-columns: 1fr;
+  }
+}
